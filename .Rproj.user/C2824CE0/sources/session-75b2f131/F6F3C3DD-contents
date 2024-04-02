@@ -1,0 +1,9 @@
+fun <- function(para, age) {
+  R <- para[1]   ;  b <- para[2]
+  ca <- para[3]  ;  d <- para[4]
+  fx <- R * ( 1 / ( gamma(b) * ca^b ) ) * (age - d)^(b - 1) * exp( -(age - d) / ca )
+  rate - fx
+}
+
+ini <- c( mean(rate), 1, var(rate), min(age) )
+nls.lm(ini, fn = fun, age = age)
