@@ -1,0 +1,35 @@
+Model1 <- function(rate, age) {
+
+  ep <- which.max(rate)
+  age1 <- age[1:ep]
+  age2 <- age[-c(1:ep)]
+
+  fun <- function(para, age) {
+    c1 <- para[1]        ;   m <- para[2]
+    s11 <- exp(para[3])  ;   s12 <- exp(para[4])
+    age1 <- age[age <= m]  ;  age2 <- age[age > m]
+    fx1 <- c1 * exp( - (age1 - m)^2 / s11^2 )
+    fx2 <- c1 * exp( - (age2 - m)^2 / s12^2 )
+    fx <- c(fx1, fx2)
+    sum( (rate - fx)^2 )
+  }
+
+  ini <- c( 1, age[ep], log( sd(age1) ), log( sd(age2) ) )
+  mod1 <- optim(ini, fun, age = age, control = list(maxit = 2000) )
+  mod2 <- optim(mod1$par, fun, age = age, control = list(maxit = 2000) )
+  while ( mod1$value - mod2$value > 1e-7 ) {
+    mod1 <- mod2
+    mod2 <- optim( mod1$par, fun, age = age, control = list(maxit = 1000) )
+  }
+
+  para <- mod2$par
+  names(para) <- c("c1", "m", "s11", "s12")
+  c1 <- para[1]   ;   m <- para[2]
+  s11 <- exp(para[3])  ;   s12 <- exp(para[4])
+  age1 <- age[age <= m]  ;  age2 <- age[age > m]
+  fx1 <- c1 * exp( - (age1 - m)^2 / s11^2 )
+  fx2 <- c1 * exp( - (age2 - m)^2 / s12^2 )
+  fit <- c(fx1, fx2)
+
+  list(param = para, sse = mod2$value, fit = fit, res = rate - fit)
+}
