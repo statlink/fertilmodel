@@ -11,8 +11,8 @@ Four fertility models are fitted using non-linear least squares. These are the H
 \tabular{lll}{
 Package: \tab nlgmcr
 Type: \tab Package\cr
-Version: \tab 1.3\cr
-Date: \tab 2024-04-08\cr
+Version: \tab 1.4\cr
+Date: \tab 2024-11-29\cr
 License: \tab GPL-2\cr
 }
 }
