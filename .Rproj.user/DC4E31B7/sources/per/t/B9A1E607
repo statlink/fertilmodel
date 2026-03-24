@@ -3,7 +3,7 @@
     "path": "~/GitHub/fertilmodel/R/comb.R",
     "project_path": "R/comb.R",
     "type": "r_source",
-    "hash": "1309300030",
+    "hash": "1590102150",
     "contents": "",
     "dirty": false,
     "created": 1774366238344.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "13,0",
+        "cursorPosition": "9,8",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1774366428,
+    "lastKnownWriteTime": 1774366567,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1774366428436,
+    "last_content_update": 1774366567385,
     "read_only": false,
     "read_only_alternatives": []
 }

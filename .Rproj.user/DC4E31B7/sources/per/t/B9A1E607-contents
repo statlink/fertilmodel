@@ -5,9 +5,9 @@ comb <- function(models) {
   Dmat <- crossprod(r)
   dmat <- matrix(0, M, 1)
   weights <- nnsolve::fnnls(Dmat, dmat, sum_to_constant = TRUE)
-  weights <- weights * (weights > .0001)
+  weights <- weights * (weights > 0.0001)
   f <- models[[ 1 ]]$fit
-  for (i in 2:M)  f <- cbind(f, models[[ i ]]$fit)
+  for ( i in 2:M )  f <- cbind(f, models[[ i ]]$fit)
   fit <- f %*% weights
   list(weights = weights, fit = fit)
 }
